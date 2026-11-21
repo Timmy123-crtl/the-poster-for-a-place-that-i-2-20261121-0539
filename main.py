@@ -272,6 +272,14 @@ def main():
     img.paste(Image.alpha_composite(img.convert("RGBA"), sea), (0, 0))
     draw = ImageDraw.Draw(img)
 
+    # Golden light path on the cloud sea beneath the sun.
+    path = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    soft_disc(path, 512, 815, 110, (255, 205, 130), 55)
+    soft_disc(path, 512, 865, 75, (255, 214, 150), 45)
+    soft_disc(path, 512, 905, 45, (255, 224, 170), 40)
+    img.paste(Image.alpha_composite(img.convert("RGBA"), path), (0, 0))
+    draw = ImageDraw.Draw(img)
+
     # Vintage double frame.
     draw.rectangle([26, 26, W - 26, H - 26], outline=CREAM, width=5)
     draw.rectangle([40, 40, W - 40, H - 40], outline=CREAM, width=2)
